@@ -1,0 +1,13 @@
+pipelines:
+  branches:
+    dev:
+      - step:
+         name: Deploy to production
+         deployment: production
+         script:
+          - pipe: atlassian/ftp-deploy:0.3.7
+            variables:
+              USER: $SFTP_USERNAME
+              SERVER: $SFTP_HOST
+              REMOTE_PATH: '/app-medvidasaude'
+              PASSWORD: $SFTP_PASSWORD
